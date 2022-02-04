@@ -12,6 +12,7 @@
 # Пример json-объекта:
 # [{"firm_1": 5000, "firm_2": 3000, "firm_3": 1000}, {"average_profit": 2000}]
 # Подсказка: использовать менеджер контекста.
+import json
 
 main_list = []
 companies_list = []
@@ -34,4 +35,5 @@ result_list.append(companies_dict)
 average_profit = sum(revenue_list) / len(revenue_list)
 average_profit_dict = dict(average_profit=average_profit)
 result_list.append(average_profit_dict)
-print(result_list)
+result_list_json = json.dumps(result_list)
+print(result_list_json)
