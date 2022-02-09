@@ -4,27 +4,36 @@
 # в каждом классе реализовать переопределение метода draw. Для каждого класса метод должен выводить уникальное сообщение;
 # создать экземпляры классов и проверить, что выведет описанный метод для каждого экземпляра.
 
-class Pen:
-    def draw(self):
-        return 'Запуск отрисовки ручкой'
-
-class Pencil:
-    def draw(self):
-        return 'Запуск отрисовки карандашем'
-
-class Handle:
-    def draw(self):
-        return 'Запуск отрисовки маркером'
-
-
-class Stationery(Pen, Pencil, Handle):
+class Stationery:
 
     def __init__(self, title):
         self.title = title
 
     def draw(self):
-        return f'Запуск отрисовки {title}'
+        return self.title
 
-run = Stationery('ручкой')
-print(run.draw())
+class Pen(Stationery):
 
+    def draw(self):
+        return self.title
+
+class Pencil(Stationery):
+
+    def draw(self):
+        return self.title
+
+class Handle(Stationery):
+
+    def draw(self):
+        return self.title
+
+run_stationery = Stationery('Запуск отрисовки')
+
+run_pen = Pen('ручкой')
+print(f'{run_stationery.draw()} {run_pen.draw()}')
+
+run_pencil = Pencil('карандашем')
+print(f'{run_stationery.draw()} {run_pencil.draw()}')
+
+run_handle = Handle('маркером')
+print(f'{run_stationery.draw()} {run_handle.draw()}')
