@@ -13,31 +13,28 @@
 # первой строки второй матрицы и т.д.
 
 matrix_1 = [[31, 32, 54], [37, 43, 22], [51, 86, 33]]
-
 matrix_2 = [[3, 5, 32], [2, 4, 6], [-1, 64, -8]]
 
-result_matrix = []
-result_matrix_row = []
 
 class Matrix:
+    def __init__(self, matrix):
+        self.matrix = matrix
 
-	def __init__(self, matrix):
-		self.matrix = matrix
+    def __add__(self, other):
+        self.result_matrix = ''
+        self.result_matrix_rows = []
+        for j in range(len(matrix_1)):
+            for i in range(len(matrix_1[0])):
+                r = self.matrix[j][i] + other.matrix[j][i]
+                self.result_matrix_rows.append(r)
+            self.result_matrix += str(self.result_matrix_rows) + '\n'
+            self.result_matrix_rows = []
+        return self.result_matrix
 
-	def __str__(self):
-		return f'{self.matrix}'
+    def __str__(result_matrix):
+        return f'я тут?{self.result_matrix}'
 
-	def __add__(self, other):
-		r = self.matrix + other.matrix
-		return Matrix(r)
 
-for i in range(len(matrix_1)):
-	for i in range(len(matrix_1)):
-		run_1 = Matrix(matrix_1[i][0])
-		run_2 = Matrix(matrix_2[i][0])
-		result = run_1 + run_2
-		result_matrix_row.append(result)
-	result_matrix.append(result_matrix_row)
-print(type(result_matrix))
-print(result_matrix) #осталось раскодировать
-
+run_1 = Matrix(matrix_1)
+run_2 = Matrix(matrix_2)
+print(run_1 + run_2)
